@@ -21,4 +21,10 @@ public class System_ {
         transactionManager.setTransactionsNotActive(transactionList);
         transactionManager.writeTransactions(transactionList);
     }
+    
+    public User findUser(int userId){
+        User user = new User();
+        user.getUser(userId);
+        return user;
+    }
 }

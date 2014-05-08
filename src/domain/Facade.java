@@ -12,4 +12,9 @@ public class Facade {
 	public void checkExpiredTransactions() {
                 system_.checkExpiredTransactions();
 	}
+        
+        public User findUser(int userId){
+            User user = system_.findUser(userId);
+            return user;
+        }
 }
