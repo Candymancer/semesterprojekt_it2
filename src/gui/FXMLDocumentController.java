@@ -6,9 +6,14 @@
 
 package gui;
 
+import Parser.TransactionParser;
 import domain.Facade;
+import domain.Transaction;
 import domain.User;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +21,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 
 /**
  * FXML Controller class
@@ -77,7 +85,25 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void recieveTransactionsAction(ActionEvent event) {
+    private void recieveTransactionsAction(ActionEvent event) throws ParserConfigurationException, SAXException, IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        File file = fileChooser.showOpenDialog(null);
+
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("TXT Files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(filter);
+        
+        TransactionParser transactionParser = new TransactionParser();
+        
+        List<Transaction> transactionList = null;
+        try {
+            transactionList = transactionParser.readFile(file);
+        } catch (Exception e) {
+        }
+        
+        facade.recieveTransactions(transactionList);
+        
+        recieveTransactionsLabel.setText("Transactions processed!");
     }
     
 }
