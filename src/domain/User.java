@@ -22,6 +22,8 @@ public class User {
     private String email;
     private String tlf;
     private String address;
+    
+    //HEJ BASTIAN
 
     public User() {
 
