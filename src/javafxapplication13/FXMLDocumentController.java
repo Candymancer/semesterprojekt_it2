@@ -6,6 +6,8 @@
 
 package javafxapplication13;
 
+import domain.Facade;
+import domain.User;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -22,9 +24,11 @@ import javafx.scene.control.TextField;
 public class FXMLDocumentController implements Initializable {
     @FXML
     private Label niveauLabel;
-    @FXML
-    private TextField UserIdInputField;
 
+    Facade facade = new Facade();
+    
+    @FXML
+    private TextField userIdInputField;
     /**
      * Initializes the controller class.
      */
@@ -35,6 +39,10 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void displayNiveau(ActionEvent event) {
+        int userId = Integer.parseInt(userIdInputField.getText());
+        User user = facade.findUser(userId);
+        
+        niveauLabel.setText(user.getLevel().toString());
     }
     
 }

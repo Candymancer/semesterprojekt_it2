@@ -43,8 +43,14 @@ public class Gold implements UserLevel {
         return 0;
     }
     
+    @Override
     public int toInt(){
         return 3;
+    }
+    
+    @Override
+    public String toString(){
+        return "Gold";
     }
 
 }

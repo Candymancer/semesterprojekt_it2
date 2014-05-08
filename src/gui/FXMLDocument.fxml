@@ -15,7 +15,7 @@
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
                 <Label fx:id="niveauLabel" layoutX="139.0" layoutY="74.0" text="Niveau" />
-                <TextField id="" fx:id="UserIdInputField" layoutX="10.0" layoutY="14.0" onAction="#displayNiveau" prefWidth="55.0" promptText="User id" />
+                <TextField id="" fx:id="userIdInputField" layoutX="10.0" layoutY="14.0" onAction="#displayNiveau" prefWidth="55.0" promptText="User id" />
               </children>
             </AnchorPane>
           </content>
