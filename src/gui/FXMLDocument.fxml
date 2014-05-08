@@ -6,23 +6,41 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="320.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="javafxapplication13.FXMLDocumentController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="gui.FXMLDocumentController">
   <children>
-    <TabPane prefHeight="200.0" prefWidth="320.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <TabPane prefHeight="200.0" prefWidth="400.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <tabs>
         <Tab text="UserInfo">
           <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="164.0" prefWidth="400.0">
               <children>
-                <Label fx:id="niveauLabel" layoutX="139.0" layoutY="74.0" text="Niveau" />
+                <Label fx:id="niveauLabel" layoutX="194.0" layoutY="36.0" text="Niveau" />
                 <TextField id="" fx:id="userIdInputField" layoutX="10.0" layoutY="14.0" onAction="#displayNiveau" prefWidth="55.0" promptText="User id" />
+                <Label layoutX="75.0" layoutY="52.0" text="Creation date:" />
+                <Label layoutX="123.0" layoutY="20.0" text="Name:" />
+                <Label layoutX="70.0" layoutY="68.0" text="Amount spent:" />
+                <Label layoutX="126.0" layoutY="84.0" text="Email:" />
+                <Label layoutX="108.0" layoutY="100.0" text="Address:" />
+                <Label layoutX="117.0" layoutY="36.0" text="Niveau:" />
+                <Label fx:id="nameLabel" layoutX="194.0" layoutY="20.0" text="Name" />
+                <Label fx:id="creationDateLabel" layoutX="194.0" layoutY="52.0" text="Creation date" />
+                <Label fx:id="amountSpentLabel" layoutX="194.0" layoutY="68.0" text="Amount spent" />
+                <Label fx:id="emailLabel" layoutX="194.0" layoutY="84.0" text="Email" />
+                <Label fx:id="addressLabel" layoutX="194.0" layoutY="100.0" text="Address" />
               </children>
             </AnchorPane>
           </content>
         </Tab>
-        <Tab text="Untitled Tab 2">
+        <Tab text="Sys Operations">
           <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <Button id="checkExpiredPoints" fx:id="checkExpiredPointsButton" mnemonicParsing="false" onAction="#checkExpiredPointsAction" text="CheckExpiredPoints" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="70.0" />
+                <Button id="recieveTransactions" fx:id="recieveTransactionsButton" mnemonicParsing="false" onAction="#recieveTransactionsAction" text="RecieveTransactions" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="70.0" />
+                <Label fx:id="checkExpiredPointsLabel" layoutX="37.0" prefWidth="145.0" text="" AnchorPane.topAnchor="100.0" />
+                <Label fx:id="recieveTransactionsLabel" layoutY="100.0" prefWidth="145.0" text="" AnchorPane.rightAnchor="38.0" />
+              </children>
+            </AnchorPane>
           </content>
         </Tab>
       </tabs>
