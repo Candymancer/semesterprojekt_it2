@@ -21,7 +21,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
@@ -58,6 +61,16 @@ public class FXMLDocumentController implements Initializable {
     private Label checkExpiredPointsLabel;
     @FXML
     private Label recieveTransactionsLabel;
+    @FXML
+    private TabPane userPane;
+    @FXML
+    private ImageView logInImage;
+    @FXML
+    private TextField usernameInput;
+    @FXML
+    private PasswordField passwordInput;
+    @FXML
+    private Button logInButton;
 
     /**
      * Initializes the controller class.
@@ -109,6 +122,14 @@ public class FXMLDocumentController implements Initializable {
         facade.recieveTransactions(transactionList);
 
         recieveTransactionsLabel.setText("Transactions processed!");
+    }
+
+    @FXML
+    private void checkLogInInformation(ActionEvent event) {
+        //tjekke om brugerens login og password matcher det indskrevne. 
+            //find brugeren efter emailadresse
+        //hvis type er normalbruger - vis normalview
+        //hvis typen er admin - vis administratorview
     }
 
 }

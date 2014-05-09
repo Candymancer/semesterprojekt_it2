@@ -4,11 +4,12 @@
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="164.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="gui.FXMLDocumentController">
   <children>
-    <TabPane prefHeight="200.0" prefWidth="400.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <TabPane fx:id="userPane" prefHeight="200.0" prefWidth="400.0" tabClosingPolicy="UNAVAILABLE" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <tabs>
         <Tab text="UserInfo">
           <content>
@@ -45,5 +46,17 @@
         </Tab>
       </tabs>
     </TabPane>
+    <Pane prefHeight="164.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <TextField fx:id="usernameInput" layoutX="230.0" layoutY="48.0" onAction="#checkLogInInformation" prefWidth="124.0" promptText="Username" />
+        <PasswordField fx:id="passwordInput" layoutX="230.0" layoutY="76.0" onAction="#checkLoginInformation" prefWidth="124.0" promptText="Password" />
+        <ImageView id="image" fx:id="logInImage" fitHeight="124.0" fitWidth="124.0" focusTraversable="false" layoutX="51.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" visible="true">
+          <image>
+            <Image url="@../../login.png" />
+          </image>
+        </ImageView>
+        <Button fx:id="logInButton" layoutX="231.0" layoutY="108.0" mnemonicParsing="false" onAction="#checkLogInInformation" text="Log in" />
+      </children>
+    </Pane>
   </children>
 </AnchorPane>
