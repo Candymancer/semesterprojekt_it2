@@ -1,7 +1,6 @@
 package domain;
 
 import java.util.Date;
-import storage.DatabaseFacade;
 
 public class Transaction {
 	private String type;
@@ -12,7 +11,7 @@ public class Transaction {
 	private boolean active;
 	private int userId;
         
-        private DatabaseFacade databaseFacade = null;
+        private DatabaseInterface databaseFacade = DatabaseInterface.getInstance();
         
         public Transaction(){
             
@@ -30,7 +29,6 @@ public class Transaction {
         }
 
 	public void write() {
-		databaseFacade = new DatabaseFacade();
                 databaseFacade.writeTransaction(this);
 	}
 

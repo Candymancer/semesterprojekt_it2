@@ -12,8 +12,7 @@ public class UserManager {
     public void addPointsToUsers(List<Transaction> transactions) {
         for (Transaction transaction : transactions) {
             int userId = transaction.getUserId();
-            user = new User();
-            user.getUser(userId);
+            user = DatabaseInterface.getInstance().getUser(userId);
             double amount = transaction.getAmount();
             double conversionRate = user.getLevel().getConversionRate();
             double points = amount * conversionRate;
@@ -36,8 +35,7 @@ public class UserManager {
     public void subtractPointsFromUsers(List<Transaction> transactions) {
         for (Transaction transaction : transactions) {
             int userId = transaction.getUserId();
-            user = new User();
-            user.getUser(userId);
+            user = DatabaseInterface.getInstance().getUser(userId);
             double amount = transaction.getAmount();
             double userAmount = user.getAmountSpentThisYear();
             user.setAmountSpentThisYear(userAmount-amount);

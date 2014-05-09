@@ -1,16 +1,10 @@
 package domain;
 
-import domain.userLevel.Bronze;
-import domain.userLevel.Gold;
-import domain.userLevel.Silver;
 import domain.userLevel.UserLevel;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Date;
-import storage.DatabaseFacade;
 
 public class User {
-    private DatabaseFacade databaseFacade = new DatabaseFacade();
+//    private DatabaseInterface databaseFacade = DatabaseInterface.getInstance();
 
     private UserLevel level;
     private Date creationDate;
@@ -43,34 +37,8 @@ public class User {
         this.address = address;
     }
 
-    public void getUser(int userId) {
-        ResultSet rs = databaseFacade.findUser(userId);
-        try {
-        while(rs.next()){
-            if(rs.getInt("level")==1){
-                this.level = new Bronze();
-            } else if (rs.getInt("level")==2){
-                this.level = new Silver();
-            } else if (rs.getInt("level")==3){
-                this.level = new Gold();
-            }
-            this.creationDate = rs.getDate("creation_date");
-            this.pointBalance = rs.getDouble("point_balance");
-            this.amountSpentThisYear = rs.getDouble("amount_spent");
-            this.name = rs.getString("name");
-            this.userId = rs.getInt("user_id");
-            this.macaddress = rs.getString("mac_address");
-            this.email = rs.getString("email");
-            this.tlf = rs.getString("tlf");
-            this.address = rs.getString("address");
-        }
-        } catch (SQLException e){
-            System.out.println("Fejl med database");
-        }
-    }
-
     public void write() {
-        databaseFacade.writeUser(this);
+        DatabaseInterface.getInstance().writeUser(this);
     }
 
     public String getAddress() {

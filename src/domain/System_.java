@@ -2,12 +2,10 @@ package domain;
 
 import java.sql.ResultSet;
 import java.util.List;
-import storage.DatabaseFacade;
 
 public class System_ {
-    private DatabaseFacade databaseFacade = new DatabaseFacade();
-    private TransactionManager transactionManager = new TransactionManager();
-    private UserManager userManager = new UserManager();
+    private final TransactionManager transactionManager = new TransactionManager();
+    private final UserManager userManager = new UserManager();
     
     public void receiveTransactions(List<Transaction> transactionList) {
         transactionManager.writeTransactions(transactionList);
@@ -15,16 +13,15 @@ public class System_ {
     }
 
     public void checkExpiredTransactions() {
-        ResultSet rs = databaseFacade.getExpiredTransactions();
-        List<Transaction> transactionList = transactionManager.processResultSet(rs);
+        ResultSet rs = DatabaseInterface.getInstance().getExpiredTransactions();
+        List<Transaction> transactionList = DatabaseInterface.getInstance().processResultSet(rs);
         userManager.subtractPointsFromUsers(transactionList);
         transactionManager.setTransactionsNotActive(transactionList);
         transactionManager.writeTransactions(transactionList);
     }
     
     public User findUser(int userId){
-        User user = new User();
-        user.getUser(userId);
+        User user = DatabaseInterface.getInstance().getUser(userId);
         return user;
     }
 }
