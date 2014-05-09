@@ -25,7 +25,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
-import storage.DatabaseFacade;
 
 /**
  * FXML Controller class

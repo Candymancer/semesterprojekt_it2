@@ -9,40 +9,16 @@ package domain.userLevel;
  *
  * @author emilfrisk
  */
-public class Silver implements UserLevel {
+public class Silver extends AbstractLevel{
 
-    private double conversionRate = 1.5;
-    private int lowerLimit = 5000;
-    private int upperLimit = 9999;
+//    private double conversionRate = 1.5;
+//    private int lowerLimit = 5000;
+//    private int upperLimit = 9999;
 
-    @Override
-    public void setConversionRate(double conversionRate) {
-        this.conversionRate = conversionRate;
-    }
-
-    @Override
-    public double getConversionRate() {
-        return this.conversionRate;
-    }
-
-    @Override
-    public int getLowerLimit() {
-        return lowerLimit;
-    }
-
-    @Override
-    public void setLowerLimit(int lowerLimit) {
-        this.lowerLimit = lowerLimit;
-    }
-
-    @Override
-    public int getUpperLimit() {
-        return upperLimit;
-    }
-
-    @Override
-    public void setUpperLimit(int upperLimit) {
-        this.upperLimit = upperLimit;
+    public Silver() {
+        conversionRate = 1.5;
+        lowerLimit = 5000;
+        upperLimit = 9999;
     }
 
     @Override

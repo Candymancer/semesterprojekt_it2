@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="gui.FXMLDocumentController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="164.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="gui.FXMLDocumentController">
   <children>
     <TabPane prefHeight="200.0" prefWidth="400.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <tabs>
@@ -35,10 +35,10 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
               <children>
-                <Button id="checkExpiredPoints" fx:id="checkExpiredPointsButton" mnemonicParsing="false" onAction="#checkExpiredPointsAction" text="CheckExpiredPoints" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="70.0" />
-                <Button id="recieveTransactions" fx:id="recieveTransactionsButton" mnemonicParsing="false" onAction="#recieveTransactionsAction" text="RecieveTransactions" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="70.0" />
-                <Label fx:id="checkExpiredPointsLabel" layoutX="37.0" prefWidth="145.0" text="" AnchorPane.topAnchor="100.0" />
-                <Label fx:id="recieveTransactionsLabel" layoutY="100.0" prefWidth="145.0" text="" AnchorPane.rightAnchor="38.0" />
+                <Button id="checkExpiredPoints" fx:id="checkExpiredPointsButton" mnemonicParsing="false" onAction="#checkExpiredPointsAction" text="CheckExpiredPoints" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="41.0" />
+                <Button id="recieveTransactions" fx:id="recieveTransactionsButton" mnemonicParsing="false" onAction="#recieveTransactionsAction" text="RecieveTransactions" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="40.0" />
+                <Label fx:id="checkExpiredPointsLabel" prefWidth="145.0" text="" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="70.0" />
+                <Label fx:id="recieveTransactionsLabel" prefWidth="145.0" text="" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="70.0" />
               </children>
             </AnchorPane>
           </content>

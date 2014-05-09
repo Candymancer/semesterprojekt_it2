@@ -9,38 +9,11 @@ package domain.userLevel;
  *
  * @author emilfrisk
  */
-public class Gold implements UserLevel {
+public class Gold extends AbstractLevel {
 
-    private double conversionRate = 2;
-    private int lowerLimit = 10000;
-
-    @Override
-    public int getLowerLimit() {
-        return lowerLimit;
-    }
-
-    @Override
-    public void setLowerLimit(int lowerLimit) {
-        this.lowerLimit = lowerLimit;
-    }
- 
-    @Override
-    public void setConversionRate(double conversionRate) {
-        this.conversionRate = conversionRate;
-    }
-
-    @Override
-    public double getConversionRate() {
-        return this.conversionRate;
-    }
-
-    @Override
-    public void setUpperLimit(int higherLimit) {
-    }
-
-    @Override
-    public int getUpperLimit() {
-        return 0;
+    public Gold() {
+        conversionRate = 2;
+        lowerLimit = 10000;   
     }
     
     @Override
