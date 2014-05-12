@@ -46,10 +46,10 @@
         </Tab>
       </tabs>
     </TabPane>
-    <Pane prefHeight="164.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <Pane fx:id="loginPane" prefHeight="164.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
         <TextField fx:id="usernameInput" layoutX="230.0" layoutY="48.0" onAction="#checkLogInInformation" prefWidth="124.0" promptText="Username" />
-        <PasswordField fx:id="passwordInput" layoutX="230.0" layoutY="76.0" onAction="#checkLoginInformation" prefWidth="124.0" promptText="Password" />
+        <PasswordField fx:id="passwordInput" layoutX="230.0" layoutY="76.0" onAction="#checkLogInInformation" prefWidth="124.0" promptText="Password" />
         <ImageView id="image" fx:id="logInImage" fitHeight="124.0" fitWidth="124.0" focusTraversable="false" layoutX="51.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" visible="true">
           <image>
             <Image url="@../../login.png" />

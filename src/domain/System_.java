@@ -24,4 +24,9 @@ public class System_ {
         User user = DatabaseInterface.getInstance().getUser(userId);
         return user;
     }
+    
+    public User findUser(String email){
+        User user = DatabaseInterface.getInstance().getUser(email);
+        return user;
+    }
 }

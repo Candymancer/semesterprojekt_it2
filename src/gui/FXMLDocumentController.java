@@ -6,6 +6,7 @@
 package gui;
 
 import Parser.TransactionParser;
+import domain.DatabaseInterface;
 import domain.Facade;
 import domain.Transaction;
 import domain.User;
@@ -25,6 +26,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
@@ -71,6 +73,8 @@ public class FXMLDocumentController implements Initializable {
     private PasswordField passwordInput;
     @FXML
     private Button logInButton;
+    @FXML
+    private Pane loginPane;
 
     /**
      * Initializes the controller class.
@@ -126,6 +130,15 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void checkLogInInformation(ActionEvent event) {
+        User user = DatabaseInterface.getInstance().getUser(usernameInput.getText());
+        if (user==null){
+            //fortæl at brugeren ikke eksistere
+        } else if (user.getPassword().equals(passwordInput.getText())){
+            loginPane.setVisible(false);
+            userPane.setVisible(true);
+        }
+        
+        
         //tjekke om brugerens login og password matcher det indskrevne. 
             //find brugeren efter emailadresse
         //hvis type er normalbruger - vis normalview

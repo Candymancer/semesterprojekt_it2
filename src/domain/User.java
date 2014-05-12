@@ -16,15 +16,14 @@ public class User {
     private String email;
     private String tlf;
     private String address;
-    
-    //HEJ BASTIAN
+    private String password;
 
     public User() {
 
     }
 
     public User(UserLevel level, Date creationDate, double pointBalance, double amountSpentThisYear, String name,
-            int userId, String macaddress, String email, String tlf, String address) {
+            int userId, String macaddress, String email, String tlf, String address, String password) {
         this.level = level;
         this.creationDate = creationDate;
         this.pointBalance = pointBalance;
@@ -35,6 +34,7 @@ public class User {
         this.email = email;
         this.tlf = tlf;
         this.address = address;
+        this.password = password;
     }
 
     public void write() {
@@ -120,4 +120,13 @@ public class User {
     public void setLevel(UserLevel level) {
         this.level = level;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
 }

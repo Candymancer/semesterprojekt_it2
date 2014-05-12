@@ -194,9 +194,54 @@ public class DatabaseInterface {
         return rs;
     }
 
+        public ResultSet findUser(String email) {
+        String query = "SELECT \n"
+                + "  users.*\n"
+                + "FROM \n"
+                + "  public.users\n"
+                + "WHERE \n"
+                + "  users.email = " + email + ";";
+
+        ResultSet rs = executeQuery(query);
+
+        if (rs == null) {
+            return null;
+        }
+
+        return rs;
+    }
+    
     public User getUser(int userId) {
         User user = new User();
         ResultSet rs = DatabaseInterface.getInstance().findUser(userId);
+        try {
+            while (rs.next()) {
+                if (rs.getInt("level") == 1) {
+                    user.setLevel(new Bronze());
+                } else if (rs.getInt("level") == 2) {
+                    user.setLevel(new Silver());
+                } else if (rs.getInt("level") == 3) {
+                    user.setLevel(new Gold());
+                }
+                user.setCreationDate(rs.getDate("creation_date"));
+                user.setPointBalance(rs.getDouble("point_balance"));
+                user.setAmountSpentThisYear(rs.getDouble("amount_spent"));
+                user.setName(rs.getString("name"));
+                user.setUserId(rs.getInt("user_id"));
+                user.setMacadresse(rs.getString("mac_address"));
+                user.setEmail(rs.getString("email"));
+                user.setTlf(rs.getString("tlf"));
+                user.setAddress(rs.getString("address"));
+                user.setPassword(rs.getString("password"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Fejl med database");
+        }
+        return user;
+    }
+    public User getUser(String email) {
+        User user = new User();
+        ResultSet rs = DatabaseInterface.getInstance().findUser(email);
         try {
             while (rs.next()) {
                 if (rs.getInt("level") == 1) {
