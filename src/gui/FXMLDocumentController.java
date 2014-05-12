@@ -130,7 +130,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void checkLogInInformation(ActionEvent event) {
-        User user = DatabaseInterface.getInstance().getUser(usernameInput.getText());
+        User user = facade.findUser(usernameInput.getText());
         if (user==null){
             //fortæl at brugeren ikke eksistere
         } else if (user.getPassword().equals(passwordInput.getText())){

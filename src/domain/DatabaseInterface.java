@@ -78,7 +78,23 @@ public class DatabaseInterface {
 
         executeUpdate(query);
     }
+    
+    public void updateTransaction(Transaction transaction) {
+//        String type = transaction.getType();
+//        Date date = transaction.getDate();
+//        Timestamp dateTimestamp = new Timestamp(date.getTime());
+//        int transactionId = transaction.getTransactionId();
+//        double amount = transaction.getAmount();
+//        String store = transaction.getStore();
+        boolean active = transaction.getActive();
+//        int userId = transaction.getUserId();
 
+        String query = "UPDATE users SET active = "+active+";";
+
+        executeUpdate(query);
+    }
+    
+    
     private ResultSet executeQuery(String query) {
         Connection con = null;
         Statement st = null;

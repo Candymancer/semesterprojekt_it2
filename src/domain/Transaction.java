@@ -3,88 +3,93 @@ package domain;
 import java.util.Date;
 
 public class Transaction {
-	private String type;
-	private Date date;
-	private int transactionId;
-	private double amount;
-	private String store;
-	private boolean active;
-	private int userId;
-        
-        private DatabaseInterface databaseFacade = DatabaseInterface.getInstance();
-        
-        public Transaction(){
-            
-        }
-        
-        public Transaction(String type, Date date, int transactionId, double amount, 
-                String store, boolean active, int userId){
-                this.type = type;
-                this.date = date;
-                this.transactionId = transactionId;
-                this.amount = amount;
-                this.store = store;
-                this.active = active;
-                this.userId = userId;
-        }
 
-	public void write() {
-                databaseFacade.writeTransaction(this);
-	}
+    private String type;
+    private Date date;
+    private int transactionId;
+    private double amount;
+    private String store;
+    private boolean active;
+    private int userId;
 
-	public int getUserId() {
-		return this.userId;
-	}
+    private DatabaseInterface databaseInterface = DatabaseInterface.getInstance();
 
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+    public Transaction() {
 
-	public boolean getActive() {
-		return this.active;
-	}
+    }
 
-	public void setActive(boolean active) {
-		this.active = active;
-	}
+    public Transaction(String type, Date date, int transactionId, double amount,
+            String store, boolean active, int userId) {
+        this.type = type;
+        this.date = date;
+        this.transactionId = transactionId;
+        this.amount = amount;
+        this.store = store;
+        this.active = active;
+        this.userId = userId;
+    }
 
-	public String getStore() {
-		return this.store;
-	}
+    public void write() {
+        databaseInterface.writeTransaction(this);
+    }
 
-	public void setStore(String store) {
-		this.store = store;
-	}
+    public void update() {
+        databaseInterface.updateTransaction(this);
+    }
 
-	public double getAmount() {
-		return this.amount;
-	}
+    public int getUserId() {
+        return this.userId;
+    }
 
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
-	public int getTransactionId() {
-		return this.transactionId;
-	}
+    public boolean getActive() {
+        return this.active;
+    }
 
-	public void setTransactionId(int transactionId) {
-		this.transactionId = transactionId;
-	}
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
-	public Date getDate() {
-		return this.date;
-	}
+    public String getStore() {
+        return this.store;
+    }
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
+    public void setStore(String store) {
+        this.store = store;
+    }
 
-	public String getType() {
-		return this.type;
-	}
+    public double getAmount() {
+        return this.amount;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public int getTransactionId() {
+        return this.transactionId;
+    }
+
+    public void setTransactionId(int transactionId) {
+        this.transactionId = transactionId;
+    }
+
+    public Date getDate() {
+        return this.date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getType() {
+        return this.type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

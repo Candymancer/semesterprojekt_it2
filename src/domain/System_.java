@@ -17,7 +17,7 @@ public class System_ {
         List<Transaction> transactionList = DatabaseInterface.getInstance().processResultSet(rs);
         userManager.subtractPointsFromUsers(transactionList);
         transactionManager.setTransactionsNotActive(transactionList);
-        transactionManager.writeTransactions(transactionList);
+        transactionManager.updateTransactions(transactionList);
     }
     
     public User findUser(int userId){
