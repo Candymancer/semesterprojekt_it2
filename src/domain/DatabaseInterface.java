@@ -78,7 +78,7 @@ public class DatabaseInterface {
 
         executeUpdate(query);
     }
-    
+
     public void updateTransaction(Transaction transaction) {
 //        String type = transaction.getType();
 //        Date date = transaction.getDate();
@@ -89,12 +89,11 @@ public class DatabaseInterface {
         boolean active = transaction.getActive();
 //        int userId = transaction.getUserId();
 
-        String query = "UPDATE users SET active = "+active+";";
+        String query = "UPDATE transactions SET active = " + active + ";";
 
         executeUpdate(query);
     }
-    
-    
+
     private ResultSet executeQuery(String query) {
         Connection con = null;
         Statement st = null;
@@ -210,13 +209,13 @@ public class DatabaseInterface {
         return rs;
     }
 
-        public ResultSet findUser(String email) {
+    public ResultSet findUser(String email) {
         String query = "SELECT \n"
                 + "  users.*\n"
                 + "FROM \n"
                 + "  public.users\n"
                 + "WHERE \n"
-                + "  users.email = " + email + ";";
+                + "  users.email = '" + email + "';";
 
         ResultSet rs = executeQuery(query);
 
@@ -226,7 +225,7 @@ public class DatabaseInterface {
 
         return rs;
     }
-    
+
     public User getUser(int userId) {
         User user = new User();
         ResultSet rs = DatabaseInterface.getInstance().findUser(userId);
@@ -255,6 +254,7 @@ public class DatabaseInterface {
         }
         return user;
     }
+
     public User getUser(String email) {
         User user = new User();
         ResultSet rs = DatabaseInterface.getInstance().findUser(email);
@@ -276,13 +276,14 @@ public class DatabaseInterface {
                 user.setEmail(rs.getString("email"));
                 user.setTlf(rs.getString("tlf"));
                 user.setAddress(rs.getString("address"));
+                user.setPassword(rs.getString("password"));
             }
         } catch (SQLException e) {
             System.out.println("Fejl med database");
         }
         return user;
     }
-    
+
     public List<Transaction> processResultSet(ResultSet rs) {
         List<Transaction> transactionList = new ArrayList<>();
         try {

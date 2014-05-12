@@ -18,6 +18,7 @@ public class System_ {
         userManager.subtractPointsFromUsers(transactionList);
         transactionManager.setTransactionsNotActive(transactionList);
         transactionManager.updateTransactions(transactionList);
+        //FIXME setting all transactions to not active
     }
     
     public User findUser(int userId){
