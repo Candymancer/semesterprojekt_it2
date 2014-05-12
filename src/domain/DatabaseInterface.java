@@ -313,4 +313,38 @@ public class DatabaseInterface {
 
         return transactionList;
     }
+
+    public Transaction getTransaction(int transactionId) {
+        //Lav query
+        String SQLQuery = "SELECT * FROM Transaction WHERE transactionId=" + transactionId;
+        
+        ResultSet rs = executeQuery(SQLQuery);
+        String transactionInfo = "";
+        try{
+             //vis al informationen fra vores query som en mere brugbar string
+        transactionInfo = rs.getString(1);
+       //udskriv vores resultatString
+            System.out.println(transactionInfo);
+        }catch(SQLException ex){
+            
+        }
+        //Split resultatstring op i flere dele, så de kan bruges seperat
+        String[] transactionParts = transactionInfo.split(" ");
+        //Information i transaction tabellen i DB baseret på ER-diagrammet
+        String type, deactivateTransaction, calcPoints, date, ID, store, amount, active, userID;
+        //placering i resultsættet er getværk.
+        type = transactionParts[0];
+        deactivateTransaction = transactionParts[1];
+        calcPoints = transactionParts[2];
+        date = transactionParts[3];
+        ID = transactionParts[4];
+        store = transactionParts[5];
+        amount = transactionParts[6];
+        active = transactionParts[7];
+        userID = transactionParts[8];
+        Transaction result;
+        //lav transaction objekt baseret på informationer hentet fra DB
+        result =  new Transaction(type, new java.sql.Date(Long.parseLong(date)), transactionId, transactionId, store, true, transactionId);
+        return result;
+    }
 }

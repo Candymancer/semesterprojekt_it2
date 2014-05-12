@@ -130,16 +130,15 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void checkLogInInformation(ActionEvent event) {
         User user = facade.findUser(usernameInput.getText());
-        if (user==null){
+        if (user == null) {
             //fortæl at brugeren ikke eksistere
-        } else if (user.getPassword().equals(passwordInput.getText())){
+        } else if (user.getPassword().equals(passwordInput.getText())) {
             loginPane.setVisible(false);
             userPane.setVisible(true);
         }
-        
-        
+
         //tjekke om brugerens login og password matcher det indskrevne. 
-            //find brugeren efter emailadresse
+        //find brugeren efter emailadresse
         //hvis type er normalbruger - vis normalview
         //hvis typen er admin - vis administratorview
     }

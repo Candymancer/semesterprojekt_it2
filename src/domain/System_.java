@@ -4,9 +4,11 @@ import java.sql.ResultSet;
 import java.util.List;
 
 public class System_ {
+
     private final TransactionManager transactionManager = new TransactionManager();
     private final UserManager userManager = new UserManager();
-    
+    private final ServiceCaseManager serviceCaseManager = new ServiceCaseManager();
+
     public void receiveTransactions(List<Transaction> transactionList) {
         transactionManager.writeTransactions(transactionList);
         userManager.addPointsToUsers(transactionList);
@@ -20,13 +22,13 @@ public class System_ {
         transactionManager.updateTransactions(transactionList);
         //FIXME setting all transactions to not active
     }
-    
-    public User findUser(int userId){
+
+    public User findUser(int userId) {
         User user = DatabaseInterface.getInstance().getUser(userId);
         return user;
     }
-    
-    public User findUser(String email){
+
+    public User findUser(String email) {
         User user = DatabaseInterface.getInstance().getUser(email);
         return user;
     }

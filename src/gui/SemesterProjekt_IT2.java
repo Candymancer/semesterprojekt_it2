@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package gui;
 
 import javafx.application.Application;
@@ -17,13 +16,13 @@ import javafx.stage.Stage;
  * @author emilfrisk
  */
 public class SemesterProjekt_IT2 extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        
+
         Scene scene = new Scene(root);
-        
+
         stage.setScene(scene);
         stage.show();
     }
@@ -39,5 +38,5 @@ public class SemesterProjekt_IT2 extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
