@@ -35,8 +35,8 @@ public class ServiceCaseManager {
         //sc = DatabaseInterface.getInstance().getServiceCase();
         return sc;
     }
-    
-    public void addpoints(ServiceCase sc, int point){
+
+    public void addpoints(ServiceCase sc, int point) {
         sc.setPointsTransferred(point);
         DatabaseInterface.getInstance().addPointsToUser(sc.getTransaction().getUserId(), point);
     }

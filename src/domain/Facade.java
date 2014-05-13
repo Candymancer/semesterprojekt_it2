@@ -23,12 +23,13 @@ public class Facade {
         User user = system_.findUser(email);
         return user;
     }
-    public Transaction createServicecase(int transactionId){
+
+    public Transaction createServicecase(int transactionId) {
         Transaction transaction = ServiceCaseManager.getInstance().createServiceCase(transactionId).getTransaction();
         return transaction;
     }
-    
-    public void addPoints(ServiceCase sc, int customerId, int points){
+
+    public void addPoints(ServiceCase sc, int customerId, int points) {
         DatabaseInterface.getInstance().addPointsToUser(customerId, points);
         EmailFacade.getInstance().sendEmail(sc.generateMessage(), points);
         System.out.println("Pointoverførsel afsluttet. Email sendt til kunde.");
