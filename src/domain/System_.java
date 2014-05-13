@@ -7,7 +7,6 @@ public class System_ {
 
     private final TransactionManager transactionManager = new TransactionManager();
     private final UserManager userManager = new UserManager();
-    private final ServiceCaseManager serviceCaseManager = new ServiceCaseManager();
 
     public void receiveTransactions(List<Transaction> transactionList) {
         transactionManager.writeTransactions(transactionList);

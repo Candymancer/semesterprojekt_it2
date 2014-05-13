@@ -11,15 +11,34 @@ package domain;
  */
 public class ServiceCaseManager {
 
+    private static ServiceCaseManager instance;
     private ServiceCase sc;
 
-    //ServiceCase skal gemmes i DB
-    public void createServiceCase(int transactionID) {
-        sc = new ServiceCase(transactionID);
+    private ServiceCaseManager() {
+
     }
 
-    public void getServicecase(int transactionID) {
-        //DatabaseInterface.getInstance().getServiceCase();
+    public static ServiceCaseManager getInstance() {
+        if (instance == null) {
+            instance = new ServiceCaseManager();
+        }
+        return instance;
+    }
+
+    //ServiceCase skal gemmes i DB
+    public ServiceCase createServiceCase(int transactionID) {
+        sc = new ServiceCase(transactionID);
+        return sc;
+    }
+
+    public ServiceCase getServicecase(int transactionID) {
+        //sc = DatabaseInterface.getInstance().getServiceCase();
+        return sc;
+    }
+    
+    public void addpoints(ServiceCase sc, int point){
+        sc.setPointsTransferred(point);
+        DatabaseInterface.getInstance().addPointsToUser(sc.getTransaction().getUserId(), point);
     }
 
     public void sendEmail(ServiceCase sc) {

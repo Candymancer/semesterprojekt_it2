@@ -17,8 +17,7 @@ public class ServiceCase {
     private static int totalServiceCases = 0;
     private Transaction transaction;
     private Date date;
-    
-    private String caseWorker;
+    private String caseWorker = "";
     private int pointsTransferred = 0;
 
     public ServiceCase(int transactionID) {
@@ -26,10 +25,10 @@ public class ServiceCase {
         date = new Date();
         serviceCaseID = totalServiceCases;
         totalServiceCases++;
-        transaction = getTransaction(transactionID);
+        transaction = getTransactionFromDB(transactionID);
     }
 
-    public Transaction getTransaction(int transactionId) {
+    public Transaction getTransactionFromDB(int transactionId) {
         return DatabaseInterface.getInstance().getTransaction(transactionId);
     }
 
@@ -45,12 +44,24 @@ public class ServiceCase {
         pointsTransferred = points;
     }
 
+    public int getPointsTransferred() {
+        return pointsTransferred;
+    }
+
     public String generateMessage() {
         String message;
         message = "Vi har " + date.toString() + " overført " + pointsTransferred
                 + "point til deres brugerkonti hos os pga. fejl i overførsel " + transaction.getTransactionId()
                 + " \nMed venlig hilsen CCS.";
         return message;
+    }
+
+    public String getCaseWorker() {
+        return caseWorker;
+    }
+
+    public int getServiceCaseID() {
+        return serviceCaseID;
     }
 
 }

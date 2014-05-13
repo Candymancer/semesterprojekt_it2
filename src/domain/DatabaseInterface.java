@@ -316,17 +316,17 @@ public class DatabaseInterface {
 
     public Transaction getTransaction(int transactionId) {
         //Lav query
-        String SQLQuery = "SELECT * FROM Transaction WHERE transactionId=" + transactionId;
-        
+        String SQLQuery = "SELECT * FROM Transaction WHERE transactionId=" + transactionId + ";";
+
         ResultSet rs = executeQuery(SQLQuery);
         String transactionInfo = "";
-        try{
-             //vis al informationen fra vores query som en mere brugbar string
-        transactionInfo = rs.getString(1);
-       //udskriv vores resultatString
+        try {
+            //vis al informationen fra vores query som en mere brugbar string
+            transactionInfo = rs.getString(1);
+            //udskriv vores resultatString
             System.out.println(transactionInfo);
-        }catch(SQLException ex){
-            
+        } catch (SQLException ex) {
+
         }
         //Split resultatstring op i flere dele, så de kan bruges seperat
         String[] transactionParts = transactionInfo.split(" ");
@@ -344,7 +344,36 @@ public class DatabaseInterface {
         userID = transactionParts[8];
         Transaction result;
         //lav transaction objekt baseret på informationer hentet fra DB
-        result =  new Transaction(type, new java.sql.Date(Long.parseLong(date)), transactionId, transactionId, store, true, transactionId);
+        result = new Transaction(type, new java.sql.Date(Long.parseLong(date)),
+                transactionId, transactionId, store, true, transactionId);
         return result;
+    }
+
+    public void addPointsToUser(int userId, int points) {
+        String SQLQuery = "";
+        executeUpdate(SQLQuery);
+    }
+
+    public void createServiceCase(ServiceCase sc) {
+        //ServiceCase tabel opbygning:
+        //serviceCaseId, date, caseWorker, transactionId, pointsTransferred
+        int serviceCaseId = sc.getServiceCaseID();
+        //Skal nok ændres så den passer ind i SQL
+        String date = sc.getDate().toString();
+        String caseWorker = sc.getCaseWorker();
+        int transactionId = sc.getTransaction().getTransactionId();
+        int pointsTransferred = sc.getPointsTransferred();
+
+        String SQLQuery = "INSERT INTO ServiceCase VALUES(" + serviceCaseId + ", "
+                + date + ", " + caseWorker + ", " + transactionId + ", " + pointsTransferred + ");";
+        executeUpdate(SQLQuery);
+    }
+
+    public ServiceCase getServiceCaseFromDB(int serviceCaseId) {
+        ServiceCase sc = null;
+        String SQLQuery = "SELECT * FROM ServiceCase WHERE serviceCaseId = " + serviceCaseId + ";";
+        ResultSet rs = executeQuery(SQLQuery);
+//Lav resultsettet rs om til en servicecase og gem i sc
+        return sc;
     }
 }
