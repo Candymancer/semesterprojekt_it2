@@ -350,7 +350,7 @@ public class DatabaseInterface {
     }
 
     public void addPointsToUser(int userId, int points) {
-        String SQLQuery = "";
+        String SQLQuery = "UPDATE User SET points=points+" + points + " WHERE UserID=" + userId + ";";
         executeUpdate(SQLQuery);
     }
 

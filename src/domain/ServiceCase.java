@@ -25,11 +25,11 @@ public class ServiceCase {
         date = new Date();
         serviceCaseID = totalServiceCases;
         totalServiceCases++;
-        transaction = getTransactionFromDB(transactionID);
+        transaction = getTransactionFromDB();
     }
 
-    public Transaction getTransactionFromDB(int transactionId) {
-        return DatabaseInterface.getInstance().getTransaction(transactionId);
+    public Transaction getTransactionFromDB() {
+        return DatabaseInterface.getInstance().getTransaction(transaction.getTransactionId());
     }
 
     public Transaction getTransaction() {
