@@ -158,17 +158,25 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void getTransactionInfo(ActionEvent event) {
-        try{
+        String error = "Invalid input.";
+        try {
             ServiceCase sc = facade.createServicecase(Integer.parseInt(transactionIdInput.getText()));
-        transactionOutput.setText("TransactionId: "+sc.getTransaction().getTransactionId()+ "\n Store: "+sc.getTransaction().getStore()+"\n Amount: "+sc.getTransaction().getAmount());
-        }catch(Exception ex){
-            transactionOutput.setText("Invalid input.");
-        }       
+            transactionOutput.setText("TransactionId: " + sc.getTransaction().getTransactionId() + "\n Store: " + sc.getTransaction().getStore() + "\n Amount: " + sc.getTransaction().getAmount());
+        } catch (Exception ex) {
+            transactionOutput.setText(error);
+        }
     }
 
     @FXML
     private void addPoints(ActionEvent event) {
-        facade.addPoints(ServiceCaseManager.getInstance().getServicecase(transactionID), customerId, points);
+        String error = "Invalid input.";
+        String success = "Done.";
+        try {
+            facade.addPoints(ServiceCaseManager.getInstance().getCurrentServiceCase(), ServiceCaseManager.getInstance().getCurrentServiceCase().getTransaction().getUserId(), Integer.parseInt(addPointsInput.getText()));
+            addPointsInput.setText(success);
+        } catch (Exception ex) {
+            addPointsInput.setText(error);
+        }
     }
 
 }
