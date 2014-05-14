@@ -24,9 +24,9 @@ public class Facade {
         return user;
     }
 
-    public Transaction createServicecase(int transactionId) {
-        Transaction transaction = ServiceCaseManager.getInstance().createServiceCase(transactionId).getTransaction();
-        return transaction;
+    public ServiceCase createServicecase(int transactionId) {
+        ServiceCase sc = ServiceCaseManager.getInstance().createServiceCase(transactionId);
+        return sc;
     }
 
     public void addPoints(ServiceCase sc, int customerId, int points) {

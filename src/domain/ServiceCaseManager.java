@@ -32,8 +32,9 @@ public class ServiceCaseManager {
     }
 
     public ServiceCase getServicecase(int transactionID) {
+        ServiceCase DBsc;
         //sc = DatabaseInterface.getInstance().getServiceCase();
-        return sc;
+        return DBsc;
     }
 
     public void addpoints(ServiceCase sc, int point) {

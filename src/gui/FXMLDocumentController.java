@@ -8,6 +8,8 @@ package gui;
 import Parser.TransactionParser;
 import domain.DatabaseInterface;
 import domain.Facade;
+import domain.ServiceCase;
+import domain.ServiceCaseManager;
 import domain.Transaction;
 import domain.User;
 import java.io.File;
@@ -24,6 +26,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -75,6 +78,16 @@ public class FXMLDocumentController implements Initializable {
     private Button logInButton;
     @FXML
     private Pane loginPane;
+    @FXML
+    private Button getInfoButton;
+    @FXML
+    private TextArea transactionOutput;
+    @FXML
+    private TextField addPointsInput;
+    @FXML
+    private Button addPointsButton;
+    @FXML
+    private TextField transactionIdInput;
 
     /**
      * Initializes the controller class.
@@ -141,6 +154,21 @@ public class FXMLDocumentController implements Initializable {
         //find brugeren efter emailadresse
         //hvis type er normalbruger - vis normalview
         //hvis typen er admin - vis administratorview
+    }
+
+    @FXML
+    private void getTransactionInfo(ActionEvent event) {
+        try{
+            ServiceCase sc = facade.createServicecase(Integer.parseInt(transactionIdInput.getText()));
+        transactionOutput.setText("TransactionId: "+sc.getTransaction().getTransactionId()+ "\n Store: "+sc.getTransaction().getStore()+"\n Amount: "+sc.getTransaction().getAmount());
+        }catch(Exception ex){
+            transactionOutput.setText("Invalid input.");
+        }       
+    }
+
+    @FXML
+    private void addPoints(ActionEvent event) {
+        facade.addPoints(ServiceCaseManager.getInstance().getServicecase(transactionID), customerId, points);
     }
 
 }

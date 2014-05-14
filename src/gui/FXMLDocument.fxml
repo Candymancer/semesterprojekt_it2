@@ -9,7 +9,19 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="164.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="gui.FXMLDocumentController">
   <children>
-    <TabPane fx:id="userPane" prefHeight="200.0" prefWidth="400.0" tabClosingPolicy="UNAVAILABLE" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <Pane fx:id="loginPane" prefHeight="164.0" prefWidth="400.0" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <TextField fx:id="usernameInput" layoutX="230.0" layoutY="48.0" onAction="#checkLogInInformation" prefWidth="124.0" promptText="Username" />
+        <PasswordField fx:id="passwordInput" layoutX="230.0" layoutY="76.0" onAction="#checkLogInInformation" prefWidth="124.0" promptText="Password" />
+        <ImageView id="image" fx:id="logInImage" fitHeight="124.0" fitWidth="124.0" focusTraversable="false" layoutX="51.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" visible="true">
+          <image>
+            <Image url="@../../login.png" />
+          </image>
+        </ImageView>
+        <Button fx:id="logInButton" layoutX="231.0" layoutY="108.0" mnemonicParsing="false" onAction="#checkLogInInformation" text="Log in" />
+      </children>
+    </Pane>
+    <TabPane fx:id="userPane" prefHeight="200.0" prefWidth="400.0" tabClosingPolicy="UNAVAILABLE" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <tabs>
         <Tab text="UserInfo">
           <content>
@@ -44,19 +56,23 @@
             </AnchorPane>
           </content>
         </Tab>
+        <Tab text="Untitled Tab">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <Button fx:id="getInfoButton" layoutX="321.0" layoutY="15.0" mnemonicParsing="false" onAction="#getTransactionInfo" text="Get info" />
+                <Label layoutX="38.0" layoutY="14.0" text="TransactionId:" />
+                <TextField fx:id="transactionIdInput" layoutX="112.0" layoutY="14.0" prefWidth="200.0" />
+                <TextArea fx:id="transactionOutput" editable="false" layoutX="24.0" layoutY="64.0" prefHeight="55.0" prefWidth="200.0" wrapText="true" />
+                <TextField fx:id="addPointsInput" layoutX="250.0" layoutY="64.0" prefWidth="124.0" />
+                <Label layoutX="247.0" layoutY="48.0" text="Points to add:" />
+                <Button fx:id="addPointsButton" layoutX="250.0" layoutY="93.0" mnemonicParsing="false" onAction="#addPoints" text="Add points" />
+                <Label layoutX="24.0" layoutY="45.0" text="Transaction info:" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
       </tabs>
     </TabPane>
-    <Pane fx:id="loginPane" prefHeight="164.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <children>
-        <TextField fx:id="usernameInput" layoutX="230.0" layoutY="48.0" onAction="#checkLogInInformation" prefWidth="124.0" promptText="Username" />
-        <PasswordField fx:id="passwordInput" layoutX="230.0" layoutY="76.0" onAction="#checkLogInInformation" prefWidth="124.0" promptText="Password" />
-        <ImageView id="image" fx:id="logInImage" fitHeight="124.0" fitWidth="124.0" focusTraversable="false" layoutX="51.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" visible="true">
-          <image>
-            <Image url="@../../login.png" />
-          </image>
-        </ImageView>
-        <Button fx:id="logInButton" layoutX="231.0" layoutY="108.0" mnemonicParsing="false" onAction="#checkLogInInformation" text="Log in" />
-      </children>
-    </Pane>
   </children>
 </AnchorPane>
