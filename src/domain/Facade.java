@@ -34,4 +34,13 @@ public class Facade {
         EmailFacade.getInstance().sendEmail(sc.generateMessage(), points);
         System.out.println("Pointoverførsel afsluttet. Email sendt til kunde.");
     }
+    public int checkIn(int userId){
+        int parkingId;
+        return parkingId;
+    }
+    
+    public void checkOut(int parkingId){
+        
+    }
+    
 }
