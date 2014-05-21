@@ -88,6 +88,20 @@ public class FXMLDocumentController implements Initializable {
     private Button addPointsButton;
     @FXML
     private TextField transactionIdInput;
+    @FXML
+    private Button checkinButton;
+    @FXML
+    private Button checkoutButton;
+    @FXML
+    private TextField userIdInputTF;
+    @FXML
+    private TextField parkingIdInputTF;
+    @FXML
+    private Button payCashButton;
+    @FXML
+    private Button payPPButton;
+    @FXML
+    private Label costOutput;
 
     /**
      * Initializes the controller class.
@@ -160,8 +174,9 @@ public class FXMLDocumentController implements Initializable {
     private void getTransactionInfo(ActionEvent event) {
         String error = "Invalid input.";
         try {
-            ServiceCase sc = facade.createServicecase(Integer.parseInt(transactionIdInput.getText()));
-            transactionOutput.setText("TransactionId: " + sc.getTransaction().getTransactionId() + "\n Store: " + sc.getTransaction().getStore() + "\n Amount: " + sc.getTransaction().getAmount());
+            Transaction transaction = facade.createServicecase(Integer.parseInt(transactionIdInput.getText())).getTransaction();
+            User user = DatabaseInterface.getInstance().getUser(transaction.getUserId());
+            transactionOutput.setText("TransactionId: " + transaction.getTransactionId() + "\n Store: " + transaction.getStore() + "\n User: " + user.getName() + "\n Amount: " + transaction.getAmount());
         } catch (Exception ex) {
             transactionOutput.setText(error);
         }
@@ -177,6 +192,42 @@ public class FXMLDocumentController implements Initializable {
         } catch (Exception ex) {
             addPointsInput.setText(error);
         }
+    }
+
+    @FXML
+    private void checkIn(ActionEvent event) {
+        int parkingId = facade.checkIn(Integer.parseInt(userIdInputField.getText()));
+        userIdInputField.setText("Check in confirmed. Parking id is " + parkingId);
+    }
+
+    @FXML
+    private void checkOut(ActionEvent event) {
+        double price = facade.checkOut(Integer.parseInt(parkingIdInputTF.getText()));
+        double pricePP = price * 100;
+        costOutput.setText(price + " kr. / " + pricePP + " PP");
+        payCashButton.setVisible(true);
+        payPPButton.setVisible(true);
+    }
+
+    @FXML
+    private void payCash(ActionEvent event) {
+        //opret transaktion, så rette mængde PP går til brugeren
+        costOutput.setText("Payment confirmed");
+        payCashButton.setVisible(false);
+        payPPButton.setVisible(false);
+    }
+
+    @FXML
+    private void payPP(ActionEvent event) {
+
+        // if (brugeren har nok PP til at betale
+        // ) {
+        // betal fra brugerens PP
+        costOutput.setText("Payment confirmed");
+        payCashButton.setVisible(false);
+        payPPButton.setVisible(false);
+        // }
+
     }
 
 }
