@@ -296,7 +296,7 @@ public class DatabaseInterface {
                 boolean active = rs.getBoolean("active");
                 int userId = rs.getInt("user_id");
 
-                Transaction transaction = new Transaction(type, date, transactionId, amount, store, active, userId);
+                Transaction transaction = new Transaction(type, amount, store, userId);
                 transactionList.add(transaction);
             }
         } catch (SQLException e) {
@@ -349,7 +349,7 @@ public class DatabaseInterface {
         return result;
     }
 
-    public void addPointsToUser(int userId, int points) {
+    public void addPointsToUser(int userId, double points) {
         String SQLQuery = "UPDATE User SET points=points+" + points + " WHERE UserID=" + userId + ";";
         executeUpdate(SQLQuery);
     }
@@ -369,11 +369,21 @@ public class DatabaseInterface {
         executeUpdate(SQLQuery);
     }
 
-    public ServiceCase getServiceCaseFromDB(int serviceCaseId) {
-        ServiceCase sc = null;
-        String SQLQuery = "SELECT * FROM ServiceCase WHERE serviceCaseId = " + serviceCaseId + ";";
-        ResultSet rs = executeQuery(SQLQuery);
-//Lav resultsettet rs om til en servicecase og gem i sc
-        return sc;
+//    public ServiceCase getServiceCaseFromDB(int serviceCaseId) {
+//        ServiceCase sc = null;
+//        String SQLQuery = "SELECT * FROM ServiceCase WHERE serviceCaseId = " + serviceCaseId + ";";
+//        ResultSet rs = executeQuery(SQLQuery);
+////Lav resultsettet rs om til en servicecase og gem i sc
+//        return sc;
+//    }
+
+    public void createParking(Parking parking) {
+        String id = parking.getParking_ID() + "";
+        String user = parking.getUser().getUserId() + "";
+        String start = parking.getPark_start_timestamp() + "";
+        String end = parking.getPark_end_timestamp() + "";
+        String price = parking.getTotal_price() + "";
+        String SQLQuery = "INSERT INTO Parking VALUES " + id + ", " + user + ", " + start + ", " + end + ", " + price + ";";
+        executeUpdate(SQLQuery);
     }
 }
